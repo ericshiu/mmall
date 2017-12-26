@@ -3,7 +3,7 @@
 <mapper namespace="com.mmall.dao.CartMapper" >
   <resultMap id="BaseResultMap" type="com.mmall.pojo.Cart" >
     <constructor >
-      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <idArg column="id" property="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="user_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="product_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="quantity" jdbcType="INTEGER" javaType="java.lang.Integer" />
