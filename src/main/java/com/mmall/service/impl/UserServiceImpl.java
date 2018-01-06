@@ -21,10 +21,10 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public ServerResponse<User> login(String username, String password) {
 		int resultCount = userMapper.checkUserName(username);
+		System.out.println(resultCount);
 		if (resultCount == 0) {
 			return ServerResponse.creatByErrorMessage("用戶名不存在");
 		}
-
 		// todo 登入密碼md5
 		String md5PassWord = MD5Util.MD5EncodeUtf8(password);
 		User user = userMapper.selectLogin(username, md5PassWord);
