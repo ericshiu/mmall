@@ -119,7 +119,7 @@
   <select id="selectCategoryChildrenByParentId" resultMap="BaseResultMap" parameterType="int">
   select
   <include refid="Base_Column_List"/>
-  form mmall_categroy
+  from mmall_categroy
   where parent_id = #{parentId}
   </select>
 </mapper>
