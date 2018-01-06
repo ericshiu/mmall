@@ -263,10 +263,10 @@
 				<version>2.2</version>
 				<configuration>
 					<path>/mmall</path>
-					<port>8888</port>
+					<port>5566</port>
 					<encoding>UTF-8</encoding>
 				</configuration>
-			</plugin>
+			</plugin>	
 		</plugins>
 	</build>
 </project>
