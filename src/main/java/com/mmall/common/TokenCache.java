@@ -10,6 +10,7 @@ import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 
 public class TokenCache {
+	public static final String TOKEN_PREFIX = "token_";
 	private static Logger logger = LoggerFactory.getLogger(TokenCache.class);
 	// LRU算法
 	private static LoadingCache<String, String> localCache = CacheBuilder.newBuilder().initialCapacity(1000)

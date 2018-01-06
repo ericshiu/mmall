@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.mmall.dao.PayInfoMapper" >
   <resultMap id="BaseResultMap" type="com.mmall.pojo.PayInfo" >
-    <constructor >
+    <constructor>
       <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="user_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="order_no" jdbcType="BIGINT" javaType="java.lang.Long" />

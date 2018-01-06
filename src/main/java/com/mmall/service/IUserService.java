@@ -5,7 +5,7 @@ import com.mmall.pojo.User;
 
 public interface IUserService {
 
-	ServerResponse<User> login(String userName, String passWord);
+	ServerResponse<User> login(String username, String password);
 
 	ServerResponse<String> register(User user);
 
@@ -15,4 +15,13 @@ public interface IUserService {
 
 	ServerResponse<String> checkAnswer(String username, String quertion, String answer);
 
+	ServerResponse<String> forgetRestPassword(String username, String passwordNew, String forgetToken);
+
+	ServerResponse<String> resetPassword(String passwordOld, String passwordNew, User user);
+
+	ServerResponse<User> updateInformation(User user);
+
+	ServerResponse<User> getInformation(Integer userId);
+
+	ServerResponse checkAdminRole(User user);
 }
