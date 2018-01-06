@@ -172,6 +172,7 @@
 	<select id="selectLogin" resultMap="BaseResultMap">
 		select
 		<include refid="Base_Column_List" />
+		from mmall_user
 		where username=#{username} AND password = #{password}
 	</select>
 	<select id="checkEmail" resultType="java.lang.Integer"
