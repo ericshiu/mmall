@@ -13,7 +13,7 @@ public interface IUserService {
 
 	ServerResponse<String> selectQuestion(String username);
 
-	ServerResponse<String> checkAnswer(String username, String quertion, String answer);
+	ServerResponse<String> checkAnswer(String username, String question, String answer);
 
 	ServerResponse<String> forgetRestPassword(String username, String passwordNew, String forgetToken);
 
