@@ -167,8 +167,7 @@
 	<select id="checkUserName" resultType="java.lang.Integer"
 		parameterType="java.lang.String">
 		select count(1) from mmall_user
-		where username =
-		#{username}
+		where username =#{username}
 	</select>
 	<select id="selectLogin" resultMap="BaseResultMap">
 		select

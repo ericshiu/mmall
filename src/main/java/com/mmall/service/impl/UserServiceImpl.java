@@ -19,15 +19,15 @@ public class UserServiceImpl implements IUserService {
 	private UserMapper userMapper;
 
 	@Override
-	public ServerResponse<User> login(String userName, String passWord) {
-		int resultCount = userMapper.checkUserName(userName);
+	public ServerResponse<User> login(String username, String password) {
+		int resultCount = userMapper.checkUserName(username);
 		if (resultCount == 0) {
 			return ServerResponse.creatByErrorMessage("用戶名不存在");
 		}
 
 		// todo 登入密碼md5
-		String md5PassWord = MD5Util.MD5EncodeUtf8(passWord);
-		User user = userMapper.selectLogin(userName, md5PassWord);
+		String md5PassWord = MD5Util.MD5EncodeUtf8(password);
+		User user = userMapper.selectLogin(username, md5PassWord);
 		if (user == null) {
 			return ServerResponse.creatByErrorMessage("密碼錯誤");
 		}
@@ -242,6 +242,7 @@ public class UserServiceImpl implements IUserService {
 	 * 
 	 * @user Eric修義 2018年1月6日 上午8:40:41
 	 */
+	@Override
 	public ServerResponse checkAdminRole(User user) {
 		if (user != null && user.getRole().intValue() == Const.Role.ROLE_ADMIN) {
 			return ServerResponse.creatBySuccess();
