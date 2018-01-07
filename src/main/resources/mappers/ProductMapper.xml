@@ -198,7 +198,7 @@
 		order by id asc
 	</select>
 	<select id="selectByNameAndProduct" resultMap="BaseResultMap"
-		parameterMap="map">
+	parameterType="map">
 		select
 		<include refid="Base_Column_List"></include>
 		from mmall_product
