@@ -43,7 +43,7 @@ public class UserController {
 	@ResponseBody
 	public ServerResponse<User> logout(HttpSession session) {
 		session.removeAttribute(Const.CURRENT_USER);
-		return ServerResponse.creatBySuccess();
+		return ServerResponse.createBySuccess();
 	}
 
 	/**
@@ -78,9 +78,9 @@ public class UserController {
 	public ServerResponse<User> getUserInfo(HttpSession session) {
 		User user = (User) session.getAttribute(Const.CURRENT_USER);
 		if (user != null) {
-			return ServerResponse.creatBySuccess(user);
+			return ServerResponse.createBySuccess(user);
 		}
-		return ServerResponse.creatByErrorMessage("用戶未登入，無法獲取當前用戶地址");
+		return ServerResponse.createByErrorMessage("用戶未登入，無法獲取當前用戶地址");
 	}
 
 	/**
@@ -130,7 +130,7 @@ public class UserController {
 	public ServerResponse<String> resetPassword(HttpSession session, String passwordOld, String passwordNew) {
 		User user = (User) session.getAttribute(Const.CURRENT_USER);
 		if (user == null) {
-			return ServerResponse.creatByErrorMessage("用戶未登入");
+			return ServerResponse.createByErrorMessage("用戶未登入");
 		}
 		return iUserService.resetPassword(passwordOld, passwordNew, user);
 	}
@@ -146,7 +146,7 @@ public class UserController {
 	public ServerResponse<User> update_information(HttpSession session, User user) {
 		User currentUser = (User) session.getAttribute(Const.CURRENT_USER);
 		if (currentUser == null) {
-			return ServerResponse.creatByErrorMessage("用戶未登入");
+			return ServerResponse.createByErrorMessage("用戶未登入");
 		}
 		user.setUsername(currentUser.getUsername());
 		user.setId(currentUser.getId());
@@ -170,7 +170,7 @@ public class UserController {
 	public ServerResponse<User> get_information(HttpSession session) {
 		User currentUser = (User) session.getAttribute(Const.CURRENT_USER);
 		if (currentUser == null) {
-			return ServerResponse.creatByErrorMessage(ResponseCode.NEED_LOGIN.getCode(), "未登錄，需要強制登陸status=10");
+			return ServerResponse.createByErrorMessage(ResponseCode.NEED_LOGIN.getCode(), "未登錄，需要強制登陸status=10");
 		}
 		return iUserService.getInformation(currentUser.getId());
 	}

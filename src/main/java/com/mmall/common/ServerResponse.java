@@ -52,37 +52,41 @@ public class ServerResponse<T> implements Serializable {
 	}
 
 	// 成功回傳方法
-	public static <T> ServerResponse<T> creatBySuccess() {
+	public static <T> ServerResponse<T> createBySuccess() {
 		return new ServerResponse<T>(ResponseCode.SUCESS.getCode());
 	}
 
-	public static <T> ServerResponse<T> creatBySuccessMessage(String msg) {
+	public static <T> ServerResponse<T> createBySuccessMessage(String msg) {
 		return new ServerResponse<T>(ResponseCode.SUCESS.getCode(), msg);
 
 	}
 
-	public static <T> ServerResponse<T> creatBySuccess(T data) {
+	public static <T> ServerResponse<T> createBySuccess(T data) {
 		return new ServerResponse<T>(ResponseCode.SUCESS.getCode(), data);
 	}
 
-	public static <T> ServerResponse<T> creatBySuccess(String msg, T data) {
+	public static <T> ServerResponse<T> createBySuccess(String msg, T data) {
 		return new ServerResponse<T>(ResponseCode.SUCESS.getCode(), msg, data);
 	}
 
 	// 失敗回傳方法
 
-	public static <T> ServerResponse<T> creatByError() {
+	public static <T> ServerResponse<T> createByError() {
 		return new ServerResponse<T>(ResponseCode.ERROR.getCode());
 	}
 
-	public static <T> ServerResponse<T> creatByErrorMessage(String errorMessage) {
+	public static <T> ServerResponse<T> createByErrorMessage(String errorMessage) {
 		return new ServerResponse<T>(ResponseCode.ERROR.getCode(), errorMessage);
 
 	}
 
-	public static <T> ServerResponse<T> creatByErrorMessage(Integer errorCode, String errorMessage) {
+	public static <T> ServerResponse<T> createByErrorMessage(Integer errorCode, String errorMessage) {
 		return new ServerResponse<T>(errorCode, errorMessage);
 
+	}
+
+	public static <T> ServerResponse<T> createByErrorCodeMessage(int errorCode, String errorMessage) {
+		return new ServerResponse<T>(errorCode, errorMessage);
 	}
 
 }

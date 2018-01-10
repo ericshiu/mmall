@@ -36,14 +36,14 @@ public class CategoryManageController {
 			@RequestParam(value = "parentId", defaultValue = "0") int parentId) {
 		User user = (User) session.getAttribute(Const.CURRENT_USER);
 		if (user == null) {
-			return ServerResponse.creatByErrorMessage(ResponseCode.NEED_LOGIN.getCode() + "用戶未登入");
+			return ServerResponse.createByErrorMessage(ResponseCode.NEED_LOGIN.getCode() + "用戶未登入");
 		}
 		// 確認是否是管理員
 		if (iUserService.checkAdminRole(user).isSuccess()) {
 			// 是管理員
 			return iCategoryService.addCategory(categoryName, parentId);
 		} else {
-			return ServerResponse.creatByErrorMessage("無權限操作，需要管理員權限");
+			return ServerResponse.createByErrorMessage("無權限操作，需要管理員權限");
 		}
 	}
 
@@ -58,14 +58,14 @@ public class CategoryManageController {
 	public ServerResponse setCategoryName(HttpSession session, Integer categoryId, String categoryName) {
 		User user = (User) session.getAttribute(Const.CURRENT_USER);
 		if (user == null) {
-			return ServerResponse.creatByErrorMessage(ResponseCode.NEED_LOGIN.getCode() + "用戶未登入");
+			return ServerResponse.createByErrorMessage(ResponseCode.NEED_LOGIN.getCode() + "用戶未登入");
 		}
 		// 確認是否是管理員
 		if (iUserService.checkAdminRole(user).isSuccess()) {
 			// 是管理員
 			return iCategoryService.updateCategoryName(categoryId, categoryName);
 		} else {
-			return ServerResponse.creatByErrorMessage("無權限操作，需要管理員權限");
+			return ServerResponse.createByErrorMessage("無權限操作，需要管理員權限");
 		}
 	}
 
@@ -81,13 +81,13 @@ public class CategoryManageController {
 			@RequestParam(value = "categoryId", defaultValue = "0") int categoryId) {
 		User user = (User) session.getAttribute(Const.CURRENT_USER);
 		if (user == null) {
-			return ServerResponse.creatByErrorMessage(ResponseCode.NEED_LOGIN.getCode() + "用戶未登入");
+			return ServerResponse.createByErrorMessage(ResponseCode.NEED_LOGIN.getCode() + "用戶未登入");
 		}
 		// 確認是否是管理員
 		if (iUserService.checkAdminRole(user).isSuccess()) {
 			return iCategoryService.getChildrenParallelCategroy(categoryId);
 		} else {
-			return ServerResponse.creatByErrorMessage("無權限操作，需要管理員權限");
+			return ServerResponse.createByErrorMessage("無權限操作，需要管理員權限");
 		}
 	}
 
@@ -103,7 +103,7 @@ public class CategoryManageController {
 			@RequestParam(value = "categoryId", defaultValue = "0") int categoryId) {
 		User user = (User) session.getAttribute(Const.CURRENT_USER);
 		if (user == null) {
-			return ServerResponse.creatByErrorMessage(ResponseCode.NEED_LOGIN.getCode() + "用戶未登入");
+			return ServerResponse.createByErrorMessage(ResponseCode.NEED_LOGIN.getCode() + "用戶未登入");
 		}
 		// 確認是否是管理員
 		if (iUserService.checkAdminRole(user).isSuccess()) {
@@ -111,7 +111,7 @@ public class CategoryManageController {
 			// 0-->1000-->10000
 			return iCategoryService.selectCategoryAadChildrenBtId(categoryId);
 		} else {
-			return ServerResponse.creatByErrorMessage("無權限操作，需要管理員權限");
+			return ServerResponse.createByErrorMessage("無權限操作，需要管理員權限");
 		}
 	}
 

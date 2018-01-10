@@ -34,7 +34,7 @@ public class CategoryServiceImpl implements ICategoryService {
 	@Override
 	public ServerResponse addCategory(String categoryName, Integer parentId) {
 		if (parentId == null || StringUtils.isBlank(categoryName)) {
-			return ServerResponse.creatByErrorMessage("添加品類參數錯誤");
+			return ServerResponse.createByErrorMessage("添加品類參數錯誤");
 		}
 		Category category = new Category();
 		category.setName(categoryName);
@@ -43,9 +43,9 @@ public class CategoryServiceImpl implements ICategoryService {
 
 		int rowCount = categoryMapper.insert(category);
 		if (rowCount > 0) {
-			return ServerResponse.creatBySuccessMessage("添加品類成功");
+			return ServerResponse.createBySuccessMessage("添加品類成功");
 		}
-		return ServerResponse.creatByErrorMessage("添加品類失敗");
+		return ServerResponse.createByErrorMessage("添加品類失敗");
 
 	}
 
@@ -55,7 +55,7 @@ public class CategoryServiceImpl implements ICategoryService {
 	@Override
 	public ServerResponse updateCategoryName(Integer categoryId, String categoryName) {
 		if (categoryId == null || StringUtils.isBlank(categoryName)) {
-			return ServerResponse.creatByErrorMessage("更新品類參數錯誤");
+			return ServerResponse.createByErrorMessage("更新品類參數錯誤");
 		}
 		Category category = new Category();
 		category.setId(categoryId);
@@ -63,9 +63,9 @@ public class CategoryServiceImpl implements ICategoryService {
 
 		int rowCount = categoryMapper.updateByPrimaryKeySelective(category);
 		if (rowCount > 0) {
-			return ServerResponse.creatBySuccessMessage("更新品類名稱成功");
+			return ServerResponse.createBySuccessMessage("更新品類名稱成功");
 		}
-		return ServerResponse.creatByErrorMessage("更新品類名稱失敗");
+		return ServerResponse.createByErrorMessage("更新品類名稱失敗");
 	}
 
 	/**
@@ -80,7 +80,7 @@ public class CategoryServiceImpl implements ICategoryService {
 		if (CollectionUtils.isEmpty(categortList)) {
 			logger.info("未找到當前分類的子分類");
 		}
-		return ServerResponse.creatBySuccess(categortList);
+		return ServerResponse.createBySuccess(categortList);
 	}
 
 	/**
@@ -89,7 +89,8 @@ public class CategoryServiceImpl implements ICategoryService {
 	 * @user Eric修義 2018年1月6日 下午4:21:58
 	 */
 
-	public ServerResponse<?> selectCategoryAadChildrenBtId(Integer categoryId) {
+	@Override
+	public ServerResponse<List<Integer>> selectCategoryAadChildrenBtId(Integer categoryId) {
 		Set<Category> categortSet = Sets.newHashSet();
 		findChildCategory(categortSet, categoryId);
 		List<Integer> categoryIdList = Lists.newArrayList();
@@ -98,7 +99,7 @@ public class CategoryServiceImpl implements ICategoryService {
 				categoryIdList.add(categoryItem.getId());
 			}
 		}
-		return ServerResponse.creatBySuccess(categoryIdList);
+		return ServerResponse.createBySuccess(categoryIdList);
 	}
 
 	/**

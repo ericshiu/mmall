@@ -50,12 +50,12 @@ public class ProductManageController {
 	public ServerResponse<?> productSave(HttpSession session, Product product) {
 		User user = (User) session.getAttribute(Const.CURRENT_USER);
 		if (user == null) {
-			return ServerResponse.creatByErrorMessage(ResponseCode.NEED_LOGIN.getCode() + "用戶未登入,請登入管理員");
+			return ServerResponse.createByErrorMessage(ResponseCode.NEED_LOGIN.getCode() + "用戶未登入,請登入管理員");
 		}
 		if (iUserService.checkAdminRole(user).isSuccess()) {
 			return iPorductService.saveOrUpdateProduct(product);
 		} else {
-			return ServerResponse.creatByErrorMessage("無操作權限");
+			return ServerResponse.createByErrorMessage("無操作權限");
 		}
 	}
 
@@ -70,12 +70,12 @@ public class ProductManageController {
 	public ServerResponse<?> setSaleStatus(HttpSession session, Integer productId, Integer status) {
 		User user = (User) session.getAttribute(Const.CURRENT_USER);
 		if (user == null) {
-			return ServerResponse.creatByErrorMessage(ResponseCode.NEED_LOGIN.getCode() + "用戶未登入,請登入管理員");
+			return ServerResponse.createByErrorMessage(ResponseCode.NEED_LOGIN.getCode() + "用戶未登入,請登入管理員");
 		}
 		if (iUserService.checkAdminRole(user).isSuccess()) {
 			return iPorductService.setSaleStatus(productId, status);
 		} else {
-			return ServerResponse.creatByErrorMessage("無操作權限");
+			return ServerResponse.createByErrorMessage("無操作權限");
 		}
 	}
 
@@ -90,12 +90,12 @@ public class ProductManageController {
 	public ServerResponse<?> getDetail(HttpSession session, Integer productId) {
 		User user = (User) session.getAttribute(Const.CURRENT_USER);
 		if (user == null) {
-			return ServerResponse.creatByErrorMessage(ResponseCode.NEED_LOGIN.getCode() + "用戶未登入,請登入管理員");
+			return ServerResponse.createByErrorMessage(ResponseCode.NEED_LOGIN.getCode() + "用戶未登入,請登入管理員");
 		}
 		if (iUserService.checkAdminRole(user).isSuccess()) {
 			return iPorductService.manageProductDetail(productId);
 		} else {
-			return ServerResponse.creatByErrorMessage("無操作權限");
+			return ServerResponse.createByErrorMessage("無操作權限");
 		}
 	}
 
@@ -113,12 +113,12 @@ public class ProductManageController {
 			@RequestParam(value = "pageSize", defaultValue = "10") int pageSize, Integer productId) {
 		User user = (User) session.getAttribute(Const.CURRENT_USER);
 		if (user == null) {
-			return ServerResponse.creatByErrorMessage(ResponseCode.NEED_LOGIN.getCode() + "用戶未登入,請登入管理員");
+			return ServerResponse.createByErrorMessage(ResponseCode.NEED_LOGIN.getCode() + "用戶未登入,請登入管理員");
 		}
 		if (iUserService.checkAdminRole(user).isSuccess()) {
 			return iPorductService.getProductList(pageNum, pageSize);
 		} else {
-			return ServerResponse.creatByErrorMessage("無操作權限");
+			return ServerResponse.createByErrorMessage("無操作權限");
 		}
 	}
 
@@ -129,12 +129,12 @@ public class ProductManageController {
 			@RequestParam(value = "pageSize", defaultValue = "10") int pageSize, Integer productId) {
 		User user = (User) session.getAttribute(Const.CURRENT_USER);
 		if (user == null) {
-			return ServerResponse.creatByErrorMessage(ResponseCode.NEED_LOGIN.getCode() + "用戶未登入,請登入管理員");
+			return ServerResponse.createByErrorMessage(ResponseCode.NEED_LOGIN.getCode() + "用戶未登入,請登入管理員");
 		}
 		if (iUserService.checkAdminRole(user).isSuccess()) {
 			return iPorductService.searchProduct(productName, productId, pageNum, pageSize);
 		} else {
-			return ServerResponse.creatByErrorMessage("無操作權限");
+			return ServerResponse.createByErrorMessage("無操作權限");
 		}
 	}
 
@@ -144,7 +144,7 @@ public class ProductManageController {
 			@RequestParam(value = "upload_file", required = false) MultipartFile file, HttpServletRequest request) {
 		User user = (User) session.getAttribute(Const.CURRENT_USER);
 		if (user == null) {
-			return ServerResponse.creatByErrorMessage(ResponseCode.NEED_LOGIN.getCode() + "用戶未登入,請登入管理員");
+			return ServerResponse.createByErrorMessage(ResponseCode.NEED_LOGIN.getCode() + "用戶未登入,請登入管理員");
 		}
 		if (iUserService.checkAdminRole(user).isSuccess()) {
 			String path = request.getSession().getServletContext().getRealPath("upload");
@@ -153,9 +153,9 @@ public class ProductManageController {
 			Map fileMap = Maps.newHashMap();
 			fileMap.put("uri", targetFileName);
 			fileMap.put("url", url);
-			return ServerResponse.creatBySuccess(fileMap);
+			return ServerResponse.createBySuccess(fileMap);
 		} else {
-			return ServerResponse.creatByErrorMessage("無操作權限");
+			return ServerResponse.createByErrorMessage("無操作權限");
 		}
 	}
 
